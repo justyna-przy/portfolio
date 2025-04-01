@@ -2,8 +2,9 @@ import React from 'react';
 import { Box } from '@mui/material';
 import Navbar from '../components/Navbar';
 import CloudAnimation from '../components/CloudAnimation';
-import ModelCanvas from '../components/ModelCanvas';
+import { Canvas } from '@react-three/fiber';
 import LandingIntro from '../components/LandingIntro';
+import LongTailedTitModel from '../components/LongTailedTitModel';
 
 const Home: React.FC = () => {
   return (
@@ -14,8 +15,10 @@ const Home: React.FC = () => {
           position: 'relative',
           width: '100%',
           height: '100vh',
+          overflow: 'hidden', // hides any overflow from the canvas
         }}
       >
+        {/* Cloud animation behind everything */}
         <Box
           sx={{
             position: 'absolute',
@@ -28,37 +31,41 @@ const Home: React.FC = () => {
         >
           <CloudAnimation />
         </Box>
+
+        {/* Fullscreen 3D Canvas */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: 1,
+          }}
+        >
+          <Canvas
+            style={{ width: '100%', height: '100%' }}
+            camera={{ position: [0, 0, 5], fov: 45 }}
+          >
+            <LongTailedTitModel />
+          </Canvas>
+        </Box>
+
+        {/* Landing Intro on top, pinned to the right */}
         <Box
           sx={{
             position: 'relative',
-            zIndex: 1,
+            zIndex: 2,
             display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            width: '100%',
             height: '100%',
+            p: 4,
+            // Push the child to the right
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+            pointerEvents: 'none',
           }}
         >
-          <Box
-            sx={{
-              flex: 1,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <ModelCanvas />
-          </Box>
-          <Box
-            sx={{
-              flex: 1,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              p: 4,
-            }}
-          >
-            <LandingIntro />
-          </Box>
+          <LandingIntro />
         </Box>
       </Box>
     </>

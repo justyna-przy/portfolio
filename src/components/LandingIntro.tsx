@@ -15,10 +15,9 @@ const LandingIntro: React.FC = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "right",
-        textAlign: "right",
-        p: { xs: 4, md: 6 },
+        textAlign: "right", // Keep right text alignment if you want
         gap: 2,
+        paddingRight: "4rem",
       }}
     >
       <Typography variant="h1">Software Engineer</Typography>

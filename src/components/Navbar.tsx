@@ -45,7 +45,7 @@ const Navbar: NextPage = () => {
           width: "100%",
           backgroundColor: "transparent",
           boxShadow: "none",
-          margin: "1.1rem",
+          padding: "1rem 0",
         }}
       >
         <StyledLink href="/" passHref className={recursiveClass}>

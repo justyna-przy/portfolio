@@ -59,13 +59,13 @@ function getDesignTokens(mode: "light" | "dark") {
       fontFamily: "var(--font-outfit), sans-serif",
       h1: {
         fontWeight: 500,
-        fontSize: "4.5rem",
+        fontSize: "5rem",
         letterSpacing: "0.1rem",
       },
       h4: {
         fontFamily: "var(--font-recursive), sans-serif",
         fontWeight: 400,
-        fontSize: "1.5rem",
+        fontSize: "1.7rem",
       },
     },
     shape: {
