@@ -1,58 +1,71 @@
-// ThemeProviderWrapper.tsx
-import React, { useMemo, useState } from 'react';
-import { ThemeProvider, createTheme, CssBaseline, responsiveFontSizes } from '@mui/material';
-import { ThemeContext } from './ThemeContext';
-import { green, red } from '@mui/material/colors';
+import React, { useMemo, useState } from "react";
+import {
+  ThemeProvider,
+  createTheme,
+  CssBaseline,
+  responsiveFontSizes,
+} from "@mui/material";
+import { ThemeContext } from "./ThemeContext";
+import { Recursive, Outfit } from "next/font/google";
+import { FontProvider } from "../styles/FontContext";
 
-function getDesignTokens(mode: 'light' | 'dark') {
+function getDesignTokens(mode: "light" | "dark") {
   return {
     palette: {
       mode,
-      ...(mode === 'light'
+      ...(mode === "light"
         ? {
             background: {
-              default: '#f0f0f0',
-              paper: '#fff',
+              default: "#f0f0f0",
+              paper: "#fff",
             },
             text: {
-              primary: '#050c10', 
-              secondary: '#3c3d45', 
+              primary: "#050c10",
+              secondary: "#3c3d45",
             },
             primary: {
-              main: '#425e9a',
+              accent: "#8991ff",
             },
             secondary: {
-              main: '#5fdbab', 
-            },
-            error: {
-              main: '#ff4d4d', 
+              main: "#ffafde",
+              pink: "#ffafde",
+              blue: "#a8cfff",
+              green: "#abffd0",
+              yellow: "#ffefad",
             },
           }
         : {
             background: {
-              default: '#050c10',
-              paper: '#081218',
+              default: "#050c10",
+              paper: "#081218",
             },
             text: {
-              primary: '#ffffff',
-              secondary: '#d5def0',
+              primary: "#ffffff",
+              secondary: "#c3cde1",
             },
             primary: {
-              main: '#7089bf',
+              main: '#8991ff',
             },
             secondary: {
-              main: '#5fdbab',
-            },
-            error: {
-              main: '#ff4d4d',
+              main: "#ffafde",
+              pink: "#ffafde",
+              blue: "#a8cfff",
+              green: "#abffd0",
+              yellow: "#ffefad",
             },
           }),
     },
     typography: {
+      fontFamily: "var(--font-outfit), sans-serif",
       h1: {
         fontWeight: 500,
-        fontSize: '3.5rem',
-        letterSpacing: '1px',
+        fontSize: "4.5rem",
+        letterSpacing: "0.1rem",
+      },
+      h4: {
+        fontFamily: "var(--font-recursive), sans-serif",
+        fontWeight: 400,
+        fontSize: "1.5rem",
       },
     },
     shape: {
@@ -70,10 +83,9 @@ function getDesignTokens(mode: 'light' | 'dark') {
     components: {
       MuiButton: {
         defaultProps: {
-          disableRipple: true,      
-          disableFocusRipple: true, 
-          textTransform: 'none'
-          
+          disableRipple: true,
+          disableFocusRipple: true,
+          textTransform: "none",
         },
       },
       MuiIconButton: {
@@ -84,8 +96,17 @@ function getDesignTokens(mode: 'light' | 'dark') {
       MuiPaper: {
         styleOverrides: {
           root: {
-            backgroundImage: 'none',
-            boxShadow: 'none',
+            backgroundImage: "none",
+            boxShadow: "none",
+          },
+        },
+      },
+      MuiTypography: {
+        styleOverrides: {
+          h4: {
+            fontFamily: "var(--font-recursive), sans-serif",
+            fontWeight: 400,
+            fontSize: "1.5rem",
           },
         },
       },
@@ -93,15 +114,29 @@ function getDesignTokens(mode: 'light' | 'dark') {
   };
 }
 
+const recursive = Recursive({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-recursive",
+});
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-outfit",
+});
 
-export default function CustomThemeProvider({ children }: { children: React.ReactNode }) {
-  const [mode, setMode] = useState<'light' | 'dark'>('dark');
+export default function CustomThemeProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [mode, setMode] = useState<"light" | "dark">("dark");
 
   // Toggling between light/dark updates the `mode` state
   const colorMode = useMemo(
     () => ({
       toggleTheme: () =>
-        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light')),
+        setMode((prevMode) => (prevMode === "light" ? "dark" : "light")),
     }),
     []
   );
@@ -116,11 +151,17 @@ export default function CustomThemeProvider({ children }: { children: React.Reac
 
   return (
     <ThemeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        {/* Normalize default browser styles */}
-        <CssBaseline />
-        {children}
-      </ThemeProvider>
+      <FontProvider
+        recursiveClass={recursive.className}
+        outfitClass={outfit.className}
+      >
+        <ThemeProvider theme={theme}>
+          <div className={`${recursive.className} ${outfit.className}`}>
+            <CssBaseline />
+            {children}
+          </div>
+        </ThemeProvider>
+      </FontProvider>
     </ThemeContext.Provider>
   );
 }

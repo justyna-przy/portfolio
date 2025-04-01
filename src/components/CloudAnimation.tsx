@@ -13,7 +13,7 @@ const Overlay = styled(Box)(({ theme }) => ({
   pointerEvents: "none",
   backgroundImage: theme.palette.mode === "light"
     ? "radial-gradient(70% 53% at 36% 76%, #fffef066 0%, #073AFF00 100%),linear-gradient(50deg, #C8DCECB0 0%, #5e4971bc 100%);"
-    : "radial-gradient(49% 81% at 45% 47%, #A6A59B26 0%, #073AFF00 100%),radial-gradient(142% 91% at -6% 74%, #EEEEEE4F 1%, #FF000000 99%),radial-gradient(142% 91% at 111% 84%, #1D1F2B3D 0%, #1D1F2BC9 100%);",
+    : "radial-gradient(49% 81% at 45% 47%, #a6a59b11 0%, #073AFF00 100%),radial-gradient(142% 91% at -6% 74%, #b3a9e139 1%, #FF000000 99%),radial-gradient(142% 91% at 111% 84%, #0d0e127d 0%, #1f1e28c7 100%);",
 }));
 
 const CloudAnimation: React.FC = () => {
@@ -28,10 +28,10 @@ const CloudAnimation: React.FC = () => {
         vantaEffect.destroy();
       }
       
-      const highlightColor = theme.palette.mode === "light" ? 0xffdaf6 : 0x747490;
-      const midtoneColor = theme.palette.mode === "light" ? 0x7987a8 : 0x2d2d48;
-      const lowlightColor = theme.palette.mode === "light" ? 0x544c73 : 0x1e11;
-      const baseColor = theme.palette.mode === "light" ? 0xffffff : 0x10105;
+      const highlightColor = theme.palette.mode === "light" ? "#ffdaf6" : "#292442";
+      const midtoneColor = theme.palette.mode === "light" ? "#7987a8" : "#161625";
+      const lowlightColor = theme.palette.mode === "light" ? "#544c73" : "#4111ee11";
+      const baseColor = theme.palette.mode === "light" ? "#ffffff" : "#101050";
 
       const newEffect = FOG({
         THREE,
@@ -54,14 +54,12 @@ const CloudAnimation: React.FC = () => {
         vantaEffect.destroy();
       }
     };
-  }, [theme.palette.mode]); // Re-run effect when theme mode changes
+  }, [theme.palette.mode]); 
 
 
   return (
     <Box position="relative" width="100%" height="100vh">
       <div ref={vantaRef} style={{ width: "100%", height: "100%" }} />
-      
-      {/* Overlay with Gradient */}
       <Overlay />
     </Box>
   );

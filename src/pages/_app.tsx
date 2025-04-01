@@ -1,5 +1,5 @@
-import type { AppProps } from 'next/app';
-import CustomThemeProvider from '../styles/CustomThemeProvider';
+import type { AppProps } from "next/app";
+import CustomThemeProvider from "../styles/CustomThemeProvider";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (

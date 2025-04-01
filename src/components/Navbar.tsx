@@ -1,57 +1,19 @@
 import React, { useContext } from "react";
 import type { NextPage } from "next";
 import Link from "next/link";
-import { ThemeContext } from "../styles/ThemeContext";
-import { useTheme } from "@mui/material/styles";
-import { AppBar, Toolbar, Typography} from "@mui/material";
+import { Box, AppBar, Toolbar, Typography, useTheme } from "@mui/material";
 import { styled } from "@mui/material/styles";
-
-// AppBar with transparent background and absolute positioning
-const TransparentAppBar = styled(AppBar)(({ theme }) => ({
-  backgroundColor: "transparent",
-  boxShadow: "none",
-  position: "absolute",
-  zIndex: 10,
-}));
-
-// Toolbar set to relative, with space-between alignment so the logo and toggle are at the edges.
-const StyledToolbar = styled(Toolbar)(({ theme }) => ({
-  position: "relative", // Important for absolutely positioning the navlinks container inside it
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  width: "100%",
-  backgroundColor: "transparent",
-  boxShadow: "none",
-  height: "5rem",
-}));
-
-// Centered navlinks container (absolute positioning centers it in the toolbar)
-const NavLinksContainer = styled("div")(({ theme }) => ({
-  position: "absolute",
-  left: "50%",
-  transform: "translateX(-50%)",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  // Optional: keep fixed width or adjust as needed
-  width: "20rem",
-  backgroundColor: "rgba(240, 240, 240, 0.05)",
-  backdropFilter: "blur(8px)",
-  borderRadius: "1rem",
-  boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-  padding: "0.2rem", 
-  border: "1px solid rgba(240, 240, 240, 0.115)",
-}));
+import { FontContext } from "../styles/FontContext";
 
 const StyledLink = styled(Link)(({ theme }) => ({
-  margin: "0.5rem",
+  margin: "0.2rem",
   color: theme.palette.text.primary,
   fontSize: "1.1rem",
   textDecoration: "none",
   cursor: "pointer",
+  fontWeight: 300,
   "&:hover": {
-    color: "#8991ff",
+    color: theme.palette.primary.main,
   },
   "&:active": {
     color: theme.palette.text.secondary,
@@ -61,61 +23,75 @@ const StyledLink = styled(Link)(({ theme }) => ({
   },
 }));
 
-const Logo = styled(Typography)(({ theme }) => ({
-  fontSize: "1.5rem",
-  fontWeight: "500",
-  cursor: "pointer",
-  color: theme.palette.text.secondary,
-}));
-
 const Navbar: NextPage = () => {
-  const { toggleTheme } = useContext(ThemeContext);
   const theme = useTheme();
+  const { recursiveClass } = useContext(FontContext);
 
   return (
-    <TransparentAppBar>
-      <StyledToolbar>
-        {/* Logo on the far left */}
-        <StyledLink href="#" passHref>
-          <Logo>justyna-przy</Logo>
+    <AppBar
+      position="absolute"
+      sx={{
+        backgroundColor: "transparent",
+        boxShadow: "none",
+        zIndex: 10,
+      }}
+    >
+      <Toolbar
+        sx={{
+          position: "relative",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "100%",
+          backgroundColor: "transparent",
+          boxShadow: "none",
+          margin: "1.1rem",
+        }}
+      >
+        <StyledLink href="/" passHref className={recursiveClass}>
+          <Typography
+            sx={{
+              fontSize: "1.5rem",
+              fontWeight: 500,
+              cursor: "pointer",
+              color: theme.palette.primary.main,
+            }}
+          >
+            justyna-przy
+          </Typography>
         </StyledLink>
 
-        {/* Nav Links container is absolutely centered */}
-        <NavLinksContainer>
-          <StyledLink href="#" passHref>
+        <Box
+          sx={{
+            position: "absolute",
+            left: "50%",
+            transform: "translateX(-50%)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "0.1rem 1rem",
+            borderBottom: `1px solid ${theme.palette.primary.main}`,
+            gap: "0.7rem",
+          }}
+        >
+          <StyledLink href="/about" className={recursiveClass}>
             About
           </StyledLink>
-          <StyledLink href="#" passHref>
+          <StyledLink href="#" passHref className={recursiveClass}>
             Projects
           </StyledLink>
-          <StyledLink href="#" passHref>
+          <StyledLink href="#" passHref className={recursiveClass}>
             Resume
           </StyledLink>
-          <StyledLink href="#" passHref>
+          <StyledLink href="#" passHref className={recursiveClass}>
             Blog
           </StyledLink>
-          <StyledLink href="#" passHref>
+          <StyledLink href="#" passHref className={recursiveClass}>
             Art
           </StyledLink>
-        </NavLinksContainer>
-
-        {/* <IconButton
-          onClick={toggleTheme}
-          sx={(theme) => ({
-            color: theme.palette.text.primary,
-            "&:hover": {
-              color: theme.palette.text.secondary,
-            },
-          })}
-        >
-          {theme.palette.mode === "light" ? (
-            <DarkMode fontSize="large" />
-          ) : (
-            <LightMode fontSize="large" />
-          )}
-        </IconButton> */}
-      </StyledToolbar>
-    </TransparentAppBar>
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 };
 

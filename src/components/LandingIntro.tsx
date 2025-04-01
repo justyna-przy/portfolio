@@ -1,35 +1,49 @@
-import React from 'react';
-import { Box, Typography, useTheme } from '@mui/material';
-import { FaXTwitter } from 'react-icons/fa6';
-import { LuGithub } from 'react-icons/lu';
-import { AiOutlineLinkedin } from 'react-icons/ai';
-import { HiOutlineMail } from 'react-icons/hi';
+import React, { useContext } from "react";
+import { Box, Typography, useTheme } from "@mui/material";
+import { FaXTwitter } from "react-icons/fa6";
+import { LuGithub } from "react-icons/lu";
+import { AiOutlineLinkedin } from "react-icons/ai";
+import { HiOutlineMail } from "react-icons/hi";
+import { FontContext } from "../styles/FontContext";
 
 const LandingIntro: React.FC = () => {
   const theme = useTheme();
+  const { recursiveClass } = useContext(FontContext);
 
   return (
-    <Box sx={{ textAlign: 'center', p: { xs: 2, md: 4 } }}>
-      <Typography variant="h1" gutterBottom>
-        Software Engineer
-      </Typography>
-      <Typography variant="h6" color='#8991ff'>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "right",
+        textAlign: "right",
+        p: { xs: 4, md: 6 },
+        gap: 2,
+      }}
+    >
+      <Typography variant="h1">Software Engineer</Typography>
+      <Typography
+        variant="h4"
+        className={recursiveClass}
+        color={theme.palette.text.secondary}
+      >
         Studying Immersive Software Engineering
       </Typography>
+
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
+          display: "flex",
           gap: theme.spacing(1),
           mt: theme.spacing(2),
-          alignItems: 'center',
-          flexWrap: 'wrap',
+          alignItems: "center",
+          flexWrap: "wrap",
+          justifyContent: "flex-end",
         }}
       >
-        <LuGithub size={30} />
-        <AiOutlineLinkedin size={35} />
-        <FaXTwitter size={30} color="pink" />
-        <HiOutlineMail size={35} />
+        <LuGithub size={45} color={theme.palette.secondary.green}/>
+        <AiOutlineLinkedin size={50} color={theme.palette.secondary.blue}/>
+        <FaXTwitter size={45} color={theme.palette.secondary.pink}/>
+        <HiOutlineMail size={50} color={theme.palette.secondary.yellow}/>
       </Box>
     </Box>
   );
