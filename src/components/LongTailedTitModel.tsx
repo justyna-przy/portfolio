@@ -1,20 +1,21 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { useFrame, useLoader, useThree } from '@react-three/fiber';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { TextureLoader } from 'three';
-import { Environment } from '@react-three/drei';
-import * as THREE from 'three';
+import React, { useRef, useEffect, useState } from "react";
+import { useFrame, useLoader } from "@react-three/fiber";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { TextureLoader } from "three";
+import { Environment } from "@react-three/drei";
+import * as THREE from "three";
 
 const LongTailedTitModel: React.FC = () => {
   // Load the GLB bird model
-  const { scene, animations } = useLoader(GLTFLoader, '/models/long_tailed_tit.glb');
+  // If you want typed result: useLoader<GLTF & { scene: THREE.Group; animations: THREE.AnimationClip[] }>
+  const { scene, animations } = useLoader(GLTFLoader, "/models/long_tailed_tit.glb");
 
   // Load textures
   const [colorMap, normalMap, roughMap, aoMap, specMap] = useLoader(TextureLoader, [
-    '/textures/UV1_Long-tailedTit_color.png',
-    '/textures/UV1_Long-tailedTit_normal.png',
-    '/textures/UV1_Long-tailedTit_rough.png',
-    '/textures/UV1_Long-tailedTit_spec.png',
+    "/textures/UV1_Long-tailedTit_color.png",
+    "/textures/UV1_Long-tailedTit_normal.png",
+    "/textures/UV1_Long-tailedTit_rough.png",
+    "/textures/UV1_Long-tailedTit_spec.png",
   ]);
 
   // Refs
@@ -28,11 +29,14 @@ const LongTailedTitModel: React.FC = () => {
   // --- SETUP: Create animation mixer and actions ---
   useEffect(() => {
     if (!scene || animations.length === 0) {
-      console.warn('LongTailedTit: no scene or animations found.');
+      console.warn("LongTailedTit: no scene or animations found.");
       return;
     }
 
-    console.log('Animations found in the model:', animations.map((clip) => clip.name));
+    console.log(
+      "Animations found in the model:",
+      animations.map((clip: THREE.AnimationClip) => clip.name)
+    );
 
     const mixer = new THREE.AnimationMixer(scene);
     mixerRef.current = mixer;
@@ -40,10 +44,11 @@ const LongTailedTitModel: React.FC = () => {
     const newActions: Record<string, THREE.AnimationAction> = {};
 
     // Hard-coded sequence of animations from your model
-    const flySequence = ['Birdfly_A1', 'Birdfly_A2', 'Birdfly_A3'];
+    const flySequence = ["Birdfly_A1", "Birdfly_A2", "Birdfly_A3"];
 
-    flySequence.forEach((name) => {
-      const clip = animations.find((c) => c.name.toLowerCase() === name.toLowerCase());
+    flySequence.forEach((name: string) => {
+      // Add a type to 'c' so it's not implicitly any
+      const clip = animations.find((c: THREE.AnimationClip) => c.name.toLowerCase() === name.toLowerCase());
       if (clip) {
         const action = mixer.clipAction(clip);
         action.setEffectiveTimeScale(0.5); // half-speed
@@ -56,8 +61,8 @@ const LongTailedTitModel: React.FC = () => {
     setActions(newActions);
 
     // Hide the cylinder mesh if present
-    scene.traverse((obj) => {
-      if (obj.isMesh && obj.name.toLowerCase().includes('cylinder')) {
+    scene.traverse((obj: THREE.Object3D) => {
+      if ((obj as THREE.Mesh).isMesh && obj.name.toLowerCase().includes("cylinder")) {
         obj.visible = false;
       }
     });
@@ -78,7 +83,7 @@ const LongTailedTitModel: React.FC = () => {
 
     const animName = names[currentAnimIndex];
     const action = actions[animName];
-    console.log('Playing animation:', animName);
+    console.log("Playing animation:", animName);
 
     action.reset().play();
 
@@ -99,6 +104,7 @@ const LongTailedTitModel: React.FC = () => {
       modelRef.current.rotation.x = -0.2;
       modelRef.current.rotation.y = 0.4;
 
+      // Move a bit with mouse X
       modelRef.current.rotation.y += state.mouse.x * 0.3 + 0.3;
     }
     mixerRef.current?.update(delta);
@@ -109,9 +115,9 @@ const LongTailedTitModel: React.FC = () => {
     if (!scene || !modelRef.current) return;
 
     // Apply loaded textures
-    scene.traverse((obj) => {
-      if (obj.isMesh && obj.material) {
-        const mat = obj.material as THREE.MeshStandardMaterial;
+    scene.traverse((obj: THREE.Object3D) => {
+      if ((obj as THREE.Mesh).isMesh && (obj as THREE.Mesh).material) {
+        const mat = (obj as THREE.Mesh).material as THREE.MeshStandardMaterial;
         mat.map = colorMap;
         mat.normalMap = normalMap;
         mat.roughnessMap = roughMap;
@@ -134,10 +140,7 @@ const LongTailedTitModel: React.FC = () => {
 
       const width = window.innerWidth;
 
-      // Simple breakpoints:
-      //  - small screens: shrink more, offset less
-      //  - medium screens: moderate scale
-      //  - large screens: original scale
+      // Simple breakpoints
       if (width < 600) {
         modelRef.current.scale.set(25, 25, 25);
         modelRef.current.position.set(0, -0.2, 0);
@@ -150,10 +153,9 @@ const LongTailedTitModel: React.FC = () => {
       }
     }
 
-    // Handle resize on mount and whenever window resizes
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    handleResize(); // Run on mount
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (

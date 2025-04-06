@@ -162,9 +162,9 @@ const About: React.FC = () => {
               gap: 2,
             }}
           >
-            <Typography variant="h3">Hi, I'm Justyna! 👋</Typography>
+            <Typography variant="h3">Hi, I&apos;m Justyna! 👋</Typography>
             <Typography variant="body1">
-              I'm currently studying to become a Software Engineer in the new
+              I&apos;m currently studying to become a Software Engineer in the new
               Immersive Software Engineering course at the University of
               Limerick. I love solving problems and learning new and exciting
               technologies. While I mostly focus on Software Engineering, I also

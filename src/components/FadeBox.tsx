@@ -1,4 +1,10 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useContext,
+  useImperativeHandle,
+} from "react";
 import { Box, BoxProps, Typography } from "@mui/material";
 import { FontContext } from "../styles/FontContext";
 
@@ -13,17 +19,8 @@ const FadeBox = React.forwardRef<HTMLDivElement, FadeBoxProps>(
     const localRef = useRef<HTMLDivElement>(null);
     const { recursiveClass } = useContext(FontContext);
 
-    // Combine the forwarded ref with our local ref
-    const combinedRef = (node: HTMLDivElement) => {
-      localRef.current = node;
-      if (ref) {
-        if (typeof ref === "function") {
-          ref(node);
-        } else {
-          (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
-        }
-      }
-    };
+    // Make the localRef’s DOM element accessible to the parent ref
+    useImperativeHandle(ref, () => localRef.current!, [localRef]);
 
     useEffect(() => {
       const observer = new IntersectionObserver(
@@ -35,9 +32,11 @@ const FadeBox = React.forwardRef<HTMLDivElement, FadeBoxProps>(
         },
         { threshold: 0.2 }
       );
+
       if (localRef.current) {
         observer.observe(localRef.current);
       }
+
       return () => {
         if (localRef.current) observer.unobserve(localRef.current);
       };
@@ -45,7 +44,7 @@ const FadeBox = React.forwardRef<HTMLDivElement, FadeBoxProps>(
 
     return (
       <Box
-        ref={combinedRef}
+        ref={localRef}
         sx={{
           position: "relative",
           opacity: visible ? 1 : 0,
@@ -85,5 +84,4 @@ const FadeBox = React.forwardRef<HTMLDivElement, FadeBoxProps>(
 );
 
 FadeBox.displayName = "FadeBox";
-
 export default FadeBox;
