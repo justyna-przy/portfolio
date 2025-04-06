@@ -17,7 +17,11 @@ const Overlay = styled(Box)(({ theme }) => ({
 }));
 
 const CloudAnimation: React.FC = () => {
-  const [vantaEffect, setVantaEffect] = useState<any>(null);
+  interface VantaEffect {
+    destroy: () => void;
+  }
+  
+  const [vantaEffect, setVantaEffect] = useState<VantaEffect | null>(null);
   const vantaRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
 
