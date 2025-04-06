@@ -20,7 +20,7 @@ const LandingIntro: React.FC = () => {
         paddingRight: "4rem",
       }}
     >
-      <Typography variant="h4">Hi, my name is Justyna and I'm a </Typography>
+      <Typography variant="h4">Hi, my name is Justyna and I&apos;m a </Typography>
       <Typography variant="h1">Software Engineer</Typography>
       <Typography
         variant="h4"

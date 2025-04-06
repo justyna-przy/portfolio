@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Box,
   Drawer,
@@ -13,22 +13,18 @@ import { LuBriefcaseBusiness } from "react-icons/lu"; // Experience
 import { IoSchoolOutline } from "react-icons/io5"; // Education
 import { FaCode } from "react-icons/fa6"; // Skills
 import { LuTrophy } from "react-icons/lu"; // Achievements
-import { FontContext } from "@/styles/FontContext"; // Recursive font class
-import { useContext } from "react";
+import { FontContext } from "@/styles/FontContext";
 
 interface AboutSidebarProps {
   activeSection: string;
   onScrollTo: (sectionId: string) => void;
 }
 
-const AboutSidebar: React.FC<AboutSidebarProps> = ({
-  activeSection,
-  onScrollTo,
-}) => {
+const AboutSidebar: React.FC<AboutSidebarProps> = ({ activeSection, onScrollTo }) => {
   const drawerWidth = 240;
   const { recursiveClass } = useContext(FontContext);
 
-  // Add an "id" property to tie each link to a specific section.
+  // Links with associated section IDs and icons
   const links = [
     { text: "About Me", id: "about", icon: <PiBird /> },
     { text: "Experience", id: "experience", icon: <LuBriefcaseBusiness /> },
@@ -47,6 +43,9 @@ const AboutSidebar: React.FC<AboutSidebarProps> = ({
           width: drawerWidth,
           boxSizing: "border-box",
           backgroundColor: "transparent",
+          borderRight: "none",
+          boxShadow: "none",
+          ml: 3,
         },
       }}
     >
@@ -66,7 +65,10 @@ const AboutSidebar: React.FC<AboutSidebarProps> = ({
               <ListItemButton
                 onClick={() => onScrollTo(link.id)}
                 sx={{
-                  cursor: "pointer", // Ensure the pointer cursor is used
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  columnGap: 0, // sets a smaller gap between children
                   "&:hover": {
                     backgroundColor: "transparent",
                   },
@@ -74,8 +76,7 @@ const AboutSidebar: React.FC<AboutSidebarProps> = ({
               >
                 <ListItemIcon
                   sx={{
-                    color:
-                      activeSection === link.id ? "primary.main" : "inherit",
+                    color: activeSection === link.id ? "primary.main" : "inherit",
                   }}
                 >
                   {link.icon}
@@ -84,11 +85,11 @@ const AboutSidebar: React.FC<AboutSidebarProps> = ({
                   primary={link.text}
                   primaryTypographyProps={{
                     sx: {
-                      color:
-                        activeSection === link.id ? "primary.main" : "inherit",
+                      fontSize: "0.875rem", // smaller font size (adjust as needed)
+                      ml: 0.5, // add a small left margin to control the gap
+                      color: activeSection === link.id ? "primary.main" : "inherit",
                     },
                   }}
-                  // apply recursive font
                   className={recursiveClass}
                 />
               </ListItemButton>

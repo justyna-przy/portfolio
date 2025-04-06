@@ -18,7 +18,7 @@ const jobs: Job[] = [
     role: "Software Engineer Intern",
     date: "June 2024 - August 2024",
     description:
-      "I am currently an intern at a tech company, where I am gaining hands-on experience in software development and collaborating with a talented team.",
+      "During my time at Stripe, I was working with the PayTo local payment method, which is an Australian real-time payment method that allows customers to make payments directly from their bank accounts. I implemented support for PayTo on Stripe Checkout and Payment Links, and enabled PayTo to work as a Dynamic Payment Method. I worked on both the backend (Ruby) and frontend (React), and throughly tested everything to ensure a seamless customer and merchant experience. I was part of the Aggregators team, but I collaborated with many other teams to make it all come together.",
     image: "/images/stripe.png",
     alt: "Stripe Logo",
     aspectRatio: "4 / 3",
@@ -28,7 +28,7 @@ const jobs: Job[] = [
     role: "Software Engineer Intern",
     date: "September 2024 - December 2024",
     description:
-      "I am currently an intern at a tech company, where I am gaining hands-on experience in software development and collaborating with a talented team.",
+      "I spent my time at Analog Devices contributing to two European funded research projects, SmartMesh IP (part of the OpenSwarm project), and an embedded monocular depth estimation project. ",
     image: "/images/analog.jpg",
     alt: "Analog Devices Logo",
     aspectRatio: "3 / 2",
@@ -64,7 +64,7 @@ const Experience: React.FC = () => {
             sx={{
               display: "flex",
               justifyContent: "space-between",
-              gap: 5,
+              gap: 6,
               alignItems: "center",
             }}
           >

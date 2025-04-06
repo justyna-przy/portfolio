@@ -44,7 +44,8 @@ const Navbar: React.FC = () => {
           width: "100%",
           backgroundColor: "transparent",
           boxShadow: "none",
-          padding: "1rem 0",
+          padding: "2rem",
+          background: `linear-gradient(to bottom, rgba(31, 28, 28, 0.841), rgba(255, 255, 255, 0))`,
         }}
       >
         <StyledLink href="/" passHref className={recursiveClass}>
@@ -54,8 +55,10 @@ const Navbar: React.FC = () => {
               fontSize: "1.5rem",
               fontWeight: 400,
               cursor: "pointer",
-              color: theme.palette.primary.main,
-              marginLeft: "0.5rem",
+              marginLeft: "1rem",
+              background: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.text.primary})`,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
             }}
           >
             justyna-przy
@@ -70,9 +73,12 @@ const Navbar: React.FC = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: "0.1rem 1rem",
-            borderBottom: `1px solid ${theme.palette.primary.main}`,
+            padding: "0.4rem 4rem",
+            border: `1px solid #cdc8c833`,
             gap: "0.7rem",
+            backgroundColor: "#1e1b1f",
+            borderRadius: "0.5rem",
+            backdropFilter: "blur(10px)",
           }}
         >
           <StyledLink href="/about" className={recursiveClass}>

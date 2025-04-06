@@ -5,7 +5,7 @@ import React, {
   useContext,
   useImperativeHandle,
 } from "react";
-import { Box, BoxProps, Typography } from "@mui/material";
+import { Box, BoxProps } from "@mui/material";
 import { FontContext } from "../styles/FontContext";
 
 export interface FadeBoxProps extends BoxProps {
