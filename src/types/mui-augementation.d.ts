@@ -1,7 +1,8 @@
-declare module 'vanta/dist/vanta.fog.min';
-declare module "three/examples/jsm/loaders/GLTFLoader";
+import "@mui/material/styles";
 
+// Augment the existing MUI module
 declare module "@mui/material/styles" {
+  // Extend the existing interfaces
   interface PaletteColor {
     accent?: string;
     pink?: string;
@@ -17,3 +18,5 @@ declare module "@mui/material/styles" {
     yellow?: string;
   }
 }
+
+export {};

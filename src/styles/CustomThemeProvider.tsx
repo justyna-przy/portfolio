@@ -24,6 +24,7 @@ function getDesignTokens(mode: "light" | "dark") {
               secondary: "#3c3d45",
             },
             primary: {
+              main: "#8991ff",
               accent: "#8991ff",
             },
             secondary: {
