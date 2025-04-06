@@ -41,7 +41,7 @@ const LandingIntro: React.FC = () => {
         }}
       >
         <Link
-          href="https://github.com/justyna-przyb"
+          href="https://github.com/justyna-przy"
           target="_blank"
           rel="noopener noreferrer"
           underline="none"

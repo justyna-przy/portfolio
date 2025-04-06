@@ -28,7 +28,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           top: 0,
           left: 0,
           width: "100%",
-          height: "100%",
         }}
       >
         <Navbar />

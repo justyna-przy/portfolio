@@ -49,11 +49,13 @@ const Navbar: React.FC = () => {
       >
         <StyledLink href="/" passHref className={recursiveClass}>
           <Typography
+            variant="h4"
             sx={{
               fontSize: "1.5rem",
-              fontWeight: 500,
+              fontWeight: 400,
               cursor: "pointer",
               color: theme.palette.primary.main,
+              marginLeft: "0.5rem",
             }}
           >
             justyna-przy
