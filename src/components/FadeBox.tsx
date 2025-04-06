@@ -63,7 +63,6 @@ const FadeBox = React.forwardRef<HTMLDivElement, FadeBoxProps>(
       >
         {title && (
           <Typography
-            variant="body"
             className={recursiveClass}
             sx={{
               position: "absolute",
