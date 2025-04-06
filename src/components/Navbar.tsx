@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import type { NextPage } from "next";
 import Link from "next/link";
 import { Box, AppBar, Toolbar, Typography, useTheme } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -23,7 +22,7 @@ const StyledLink = styled(Link)(({ theme }) => ({
   },
 }));
 
-const Navbar: NextPage = () => {
+const Navbar: React.FC = () => {
   const theme = useTheme();
   const { recursiveClass } = useContext(FontContext);
 
@@ -77,7 +76,7 @@ const Navbar: NextPage = () => {
           <StyledLink href="/about" className={recursiveClass}>
             About
           </StyledLink>
-          <StyledLink href="#" passHref className={recursiveClass}>
+          <StyledLink href="/projects" passHref className={recursiveClass}>
             Projects
           </StyledLink>
           <StyledLink href="#" passHref className={recursiveClass}>

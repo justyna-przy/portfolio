@@ -56,16 +56,44 @@ function getDesignTokens(mode: "light" | "dark") {
           }),
     },
     typography: {
-      fontFamily: "var(--font-outfit), sans-serif",
+
       h1: {
+        fontFamily: "var(--font-outfit), sans-serif",
         fontWeight: 500,
         fontSize: "5rem",
         letterSpacing: "0.1rem",
+      },
+      h3: {
+        fontFamily: "var(--font-outfit), sans-serif",
+        fontWeight: 400,
+        fontSize: "1.7rem",
       },
       h4: {
         fontFamily: "var(--font-recursive), sans-serif",
         fontWeight: 400,
         fontSize: "1.7rem",
+      },
+      h5: {
+        fontFamily: "var(--font-outfit), sans-serif",
+        fontWeight: 300,
+        fontStyle: "italic",
+        fontSize: "1.4rem",
+      },
+      h6: {
+        fontFamily: "var(--font-outfit), sans-serif",
+        fontWeight: 200,
+        fontSize: "1rem",
+        fontStyle: "italic",
+      },
+      body1: {
+        fontWeight: 300,
+        fontSize: "1.2rem",
+        fontFamily: "var(--font-outfit), sans-serif",
+      },
+      body2: {
+        fontWeight: 300,
+        fontSize: "0.8rem",
+        fontFamily: "var(--font-recursive), sans-serif",
       },
     },
     shape: {
@@ -121,7 +149,7 @@ const recursive = Recursive({
 });
 const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["200", "300", "400", "500", "600", "700"],
   variable: "--font-outfit",
 });
 
