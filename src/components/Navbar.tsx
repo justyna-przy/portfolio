@@ -79,13 +79,13 @@ const Navbar: React.FC = () => {
           <StyledLink href="/projects" passHref className={recursiveClass}>
             Projects
           </StyledLink>
-          <StyledLink href="#" passHref className={recursiveClass}>
+          <StyledLink href="" passHref className={recursiveClass}>
             Resume
           </StyledLink>
-          <StyledLink href="#" passHref className={recursiveClass}>
+          <StyledLink href="/blog" passHref className={recursiveClass}>
             Blog
           </StyledLink>
-          <StyledLink href="#" passHref className={recursiveClass}>
+          <StyledLink href="/art" passHref className={recursiveClass}>
             Art
           </StyledLink>
         </Box>

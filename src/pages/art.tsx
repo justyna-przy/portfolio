@@ -1,7 +1,7 @@
 import React from "react";
 import WIP from "@/components/WIP";
 
-const Projects: React.FC = () => {
+const Art: React.FC = () => {
   return (
     <>
       <WIP />
@@ -9,4 +9,4 @@ const Projects: React.FC = () => {
   );
 };
 
-export default Projects;
+export default Art;

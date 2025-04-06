@@ -9,7 +9,6 @@ import LongTailedTitModel from '../components/LongTailedTitModel';
 const Home: React.FC = () => {
   return (
     <>
-      <Navbar />
       <Box
         sx={{
           position: 'relative',
@@ -18,21 +17,6 @@ const Home: React.FC = () => {
           overflow: 'hidden', // hides any overflow from the canvas
         }}
       >
-        {/* Cloud animation behind everything */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            zIndex: 0,
-            width: '100%',
-            height: '100%',
-          }}
-        >
-          <CloudAnimation />
-        </Box>
-
-        {/* Fullscreen 3D Canvas */}
         <Box
           sx={{
             position: 'absolute',
@@ -51,7 +35,6 @@ const Home: React.FC = () => {
           </Canvas>
         </Box>
 
-        {/* Landing Intro on top, pinned to the right */}
         <Box
           sx={{
             position: 'relative',
@@ -59,10 +42,9 @@ const Home: React.FC = () => {
             display: 'flex',
             height: '100%',
             p: 4,
-            // Push the child to the right
             justifyContent: 'flex-end',
             alignItems: 'center',
-            pointerEvents: 'none',
+            pointerEvents: 'all',
           }}
         >
           <LandingIntro />

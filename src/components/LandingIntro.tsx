@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme, Link } from "@mui/material";
 import { FaXTwitter } from "react-icons/fa6";
 import { LuGithub } from "react-icons/lu";
 import { AiOutlineLinkedin } from "react-icons/ai";
@@ -15,19 +15,19 @@ const LandingIntro: React.FC = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        textAlign: "right", // Keep right text alignment if you want
+        textAlign: "right",
         gap: 2,
         paddingRight: "4rem",
       }}
     >
-      <Typography variant="h4">Hi, my name is Justyna.</Typography>
+      <Typography variant="h4">Hi, my name is Justyna and I'm a </Typography>
       <Typography variant="h1">Software Engineer</Typography>
       <Typography
         variant="h4"
         className={recursiveClass}
         color={theme.palette.text.secondary}
       >
-        Studying Immersive Software Engineering
+        Studying Immersive Software Engineering, Ex-Stripe
       </Typography>
 
       <Box
@@ -40,10 +40,33 @@ const LandingIntro: React.FC = () => {
           justifyContent: "flex-end",
         }}
       >
-        <LuGithub size={45} color={theme.palette.secondary.green}/>
-        <AiOutlineLinkedin size={50} color={theme.palette.secondary.blue}/>
-        <FaXTwitter size={45} color={theme.palette.secondary.pink}/>
-        <HiOutlineMail size={50} color={theme.palette.secondary.yellow}/>
+        <Link
+          href="https://github.com/justyna-przyb"
+          target="_blank"
+          rel="noopener noreferrer"
+          underline="none"
+        >
+          <LuGithub size={45} color={theme.palette.secondary.green} />
+        </Link>
+        <Link
+          href="https://www.linkedin.com/in/justyna-przy/"
+          target="_blank"
+          rel="noopener noreferrer"
+          underline="none"
+        >
+          <AiOutlineLinkedin size={50} color={theme.palette.secondary.blue} />
+        </Link>
+        <Link
+          href="https://x.com/justyna_przy"
+          target="_blank"
+          rel="noopener noreferrer"
+          underline="none"
+        >
+          <FaXTwitter size={45} color={theme.palette.secondary.pink} />
+        </Link>
+        <Link href="mailto:justyna.przyborska22@gmail.com" underline="none">
+          <HiOutlineMail size={50} color={theme.palette.secondary.yellow} />
+        </Link>
       </Box>
     </Box>
   );

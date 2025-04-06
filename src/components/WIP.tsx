@@ -13,7 +13,6 @@ const WIP: React.FC = () => {
             alignItems: "center",
             height: "100vh",
             margin: "0 auto",
-            backgroundColor: "rgba(14, 4, 23, 0.8)",
         }}
     >
       <Image
@@ -23,8 +22,8 @@ const WIP: React.FC = () => {
         alt="Image of bird with a hard hat"
         />
     <Typography
-        variant="h4">
-        This page is a work in progress. Please check back later.
+        variant="h3">
+        This page is a work in progress. Please check back later!
     </Typography>
     </Box>
   );

@@ -13,6 +13,8 @@ import { LuBriefcaseBusiness } from "react-icons/lu"; // Experience
 import { IoSchoolOutline } from "react-icons/io5"; // Education
 import { FaCode } from "react-icons/fa6"; // Skills
 import { LuTrophy } from "react-icons/lu"; // Achievements
+import { FontContext } from "@/styles/FontContext"; // Recursive font class
+import { useContext } from "react";
 
 interface AboutSidebarProps {
   activeSection: string;
@@ -24,6 +26,7 @@ const AboutSidebar: React.FC<AboutSidebarProps> = ({
   onScrollTo,
 }) => {
   const drawerWidth = 240;
+  const { recursiveClass } = useContext(FontContext);
 
   // Add an "id" property to tie each link to a specific section.
   const links = [
@@ -85,6 +88,8 @@ const AboutSidebar: React.FC<AboutSidebarProps> = ({
                         activeSection === link.id ? "primary.main" : "inherit",
                     },
                   }}
+                  // apply recursive font
+                  className={recursiveClass}
                 />
               </ListItemButton>
             </ListItem>

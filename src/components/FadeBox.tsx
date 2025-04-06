@@ -50,7 +50,7 @@ const FadeBox = React.forwardRef<HTMLDivElement, FadeBoxProps>(
           opacity: visible ? 1 : 0,
           transform: visible ? "translateY(0)" : "translateY(20px)",
           transition: "opacity 1s ease-out, transform 1s ease-out",
-          background: "rgba(24, 18, 28, 0.2)",
+          background: "#1c1b2074",
           backdropFilter: "blur(10px)",
           borderRadius: 2,
           p: 2,
@@ -62,19 +62,20 @@ const FadeBox = React.forwardRef<HTMLDivElement, FadeBoxProps>(
         {...rest}
       >
         {title && (
-          <Typography
+          <h6
             className={recursiveClass}
-            sx={{
+            style={{
               position: "absolute",
               top: "1rem",
               right: "1rem",
               fontSize: "0.8rem",
-              fontWeight: "300",
+              fontWeight: 300,
               opacity: 0.8,
+              margin: 0, 
             }}
           >
             {title}
-          </Typography>
+          </h6>
         )}
         {children}
       </Box>

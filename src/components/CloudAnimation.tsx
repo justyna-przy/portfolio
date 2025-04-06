@@ -13,7 +13,7 @@ const Overlay = styled(Box)(({ theme }) => ({
   pointerEvents: "none",
   backgroundImage: theme.palette.mode === "light"
     ? "radial-gradient(70% 53% at 36% 76%, #fffef066 0%, #073AFF00 100%),linear-gradient(50deg, #C8DCECB0 0%, #5e4971bc 100%);"
-    : "radial-gradient(49% 81% at 45% 47%, #a6a59b11 0%, #073AFF00 100%),radial-gradient(142% 91% at -6% 74%, #b3a9e139 1%, #FF000000 99%),radial-gradient(142% 91% at 111% 84%, #0d0e127d 0%, #1f1e28c7 100%);",
+    : "radial-gradient(49% 81% at 45% 47%, #a7a7a711 0%, #073AFF00 100%),radial-gradient(142% 91% at -6% 74%, #b0afaf39 1%, #FF000000 99%),radial-gradient(142% 91% at 111% 84%, #100f0f7b 0%, #1c1b1bc5 100%);",
 }));
 
 const CloudAnimation: React.FC = () => {
