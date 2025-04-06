@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Link from "next/link";
 import { Box, AppBar, Toolbar, Typography, useTheme } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { styled } from "@mui/system";
 import { FontContext } from "../styles/FontContext";
 
 const StyledLink = styled(Link)(({ theme }) => ({

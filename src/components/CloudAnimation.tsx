@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import FOG from "vanta/dist/vanta.fog.min";
 import * as THREE from "three";
 import { useTheme, Box } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { styled } from "@mui/system";
 
 const Overlay = styled(Box)(({ theme }) => ({
   position: "absolute",
