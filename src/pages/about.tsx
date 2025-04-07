@@ -57,7 +57,7 @@ const About: React.FC = () => {
         });
       },
       {
-        threshold: 0.5, // Section becomes active when 50% is visible
+        threshold: 0.25, // Section becomes active when 50% is visible
       }
     );
 
@@ -187,7 +187,8 @@ const About: React.FC = () => {
             doing—half of our time is spent on campus working in teams on
             projects, and the other half in paid residencies with top tech
             companies.
-            <br /><br />
+            <br />
+            <br />
             So far, I’ve completed residencies at Stripe and Analog Devices,
             where I worked on everything from frontend/backend development to
             embedded AI research. My ISE class projects have included a smart
@@ -204,6 +205,51 @@ const About: React.FC = () => {
           ref={skillsRef}
         >
           <Skills />
+        </FadeBox>
+
+        <FadeBox
+          title="0.5 Achievements"
+          sx={{ display: "flex", flexDirection: "column", gap: 2, my: 4 }}
+          ref={achievementsRef}
+        >
+          <Typography variant="h3">Achievements</Typography>
+          <Box
+            component="ul"
+            sx={{
+              pl: "1.2rem",
+              m: 0,
+              listStyleType: "circle",
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.75rem",
+            }}
+          >
+            <li>
+              My teammate and I won first place in UL Student Entrepreneur of
+              the Year for our idea, &apos;Little Footprints&apos;.
+            </li>
+            <li>
+              I was awarded the Patch San Francisco Fellowship, which provided
+              me a fully funded opportunity to explore Silicon Valley&apos;s tech
+              scene and meet founders.
+            </li>
+            <li>
+              My IEEE Robotics Team won the IEEE International Robotics
+              Championship in Malta.
+            </li>
+            <li>
+              I was elected as a UL Consulting and Entrepreneurship Society
+              committee member.
+            </li>
+            <li>
+              My team won first place in the 2023 NDRC Start-up Sprint for our
+              idea, &apos;VirTown&apos;.
+            </li>
+            <li>
+              My team pitched our project to judges at HackIreland 2025, which
+              was a VR study environment.
+            </li>
+          </Box>
         </FadeBox>
       </Box>
     </>
