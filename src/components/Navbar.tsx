@@ -87,7 +87,12 @@ const Navbar: React.FC = () => {
           <StyledLink href="/projects" passHref className={recursiveClass}>
             Projects
           </StyledLink>
-          <StyledLink href="" passHref className={recursiveClass}>
+          <StyledLink
+            href="/JustynaCV0425.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={recursiveClass}
+          >
             Resume
           </StyledLink>
           <StyledLink href="/blog" passHref className={recursiveClass}>
