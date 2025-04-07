@@ -100,11 +100,11 @@ const About: React.FC = () => {
           width: "100%",
           maxWidth: { xs: "95%", md: 700, xl: 900 },
           margin: "0 auto",
-          pt: { xs: 10, sm: 15 },
+          pt: { xs: 17, md: 15 },
           pb: { xs: 5, sm: 10 },
           display: "flex",
           flexDirection: "column",
-          gap: { xs: 4, sm: 6 },
+          gap: { xs: 2, md: 6 },
         }}
       >
         {/* About Me Section */}
