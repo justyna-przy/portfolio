@@ -8,7 +8,6 @@ import { useRef, useState, useEffect } from "react";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 
-
 const About: React.FC = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
@@ -77,7 +76,6 @@ const About: React.FC = () => {
     };
   }, []);
 
-
   return (
     <>
       <Box
@@ -85,7 +83,7 @@ const About: React.FC = () => {
           position: "fixed",
           top: 0,
           left: 0,
-          width: 240, 
+          width: 240,
           height: "100vh",
           zIndex: 3,
         }}
@@ -129,8 +127,8 @@ const About: React.FC = () => {
           >
             <Typography variant="h3">Hi, I&apos;m Justyna! 👋</Typography>
             <Typography variant="body1">
-              I&apos;m currently studying to become a Software Engineer in the new
-              Immersive Software Engineering course at the University of
+              I&apos;m currently studying to become a Software Engineer in the
+              new Immersive Software Engineering course at the University of
               Limerick. I love solving problems and learning new and exciting
               technologies. While I mostly focus on Software Engineering, I also
               have a variety of other interests such as Web-Design, Electronics,
@@ -182,11 +180,21 @@ const About: React.FC = () => {
           <Typography variant="h5">University of Limerick</Typography>
           <Typography variant="h6">September 2023 - Present</Typography>
           <Typography variant="body1">
-            I am currently studying in the Immersive Software Engineering course
-            at the University of Limerick. This program focuses on practical
-            skills and hands-on experience in software development. I am
-            learning various programming languages, frameworks, and tools to
-            prepare for a successful career in the tech industry.
+            I&apos;m currently studying Immersive Software Engineering, a unique
+            and hands-on software engineering degree that blends academics with
+            real-world industry experience. The program leads to an integrated
+            BSc/MSc in just four years and is built around learning by
+            doing—half of our time is spent on campus working in teams on
+            projects, and the other half in paid residencies with top tech
+            companies.
+            <br /><br />
+            So far, I’ve completed residencies at Stripe and Analog Devices,
+            where I worked on everything from frontend/backend development to
+            embedded AI research. My ISE class projects have included a smart
+            chessboard with live piece detection, a real-time device metrics
+            collection app, an Irish bird classification neural network, and
+            several interactive web and game applications. Currently, I&apos;m
+            averaging a QCA of 3.9/4.0.
           </Typography>
         </FadeBox>
 

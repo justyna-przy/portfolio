@@ -68,7 +68,7 @@ const Experience: React.FC = () => {
               alignItems: "center",
             }}
           >
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2, width: { xs: 350, sm: 500, md: 700 }}}>
               <Typography variant="h3">{job.company}</Typography>
               <Typography variant="h5">{job.role}</Typography>
               <Typography variant="h6">{job.date}</Typography>
@@ -77,7 +77,7 @@ const Experience: React.FC = () => {
             <Box
               sx={{
                 position: "relative",
-                width: { xs: 150, sm: 200, md: 250 },
+                width: { xs: 100, sm: 150, md: 200 },
                 aspectRatio: job.aspectRatio,
               }}
             >
