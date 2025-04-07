@@ -106,7 +106,7 @@ const About: React.FC = () => {
           pb: 10,
           display: "flex",
           flexDirection: "column",
-          gap: 12,
+          gap: 6,
         }}
       >
         <FadeBox
