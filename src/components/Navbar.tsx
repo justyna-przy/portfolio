@@ -11,7 +11,7 @@ import {
 import { styled } from "@mui/system";
 import { FontContext } from "../styles/FontContext";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
-import { ThemeContext } from "../styles/ThemeContext"; // Light/dark toggle context
+import { ThemeContext } from "../styles/ThemeContext"; 
 
 const StyledLink = styled(Link)(({ theme }) => ({
   margin: "0.2rem",
@@ -106,7 +106,7 @@ const Navbar: React.FC = () => {
           </Typography>
         </StyledLink>
 
-        <IconButton onClick={toggleTheme} color="inherit">
+        <IconButton  color="inherit">
           {isLightMode ? <Brightness4 /> : <Brightness7 />}
         </IconButton>
       </Toolbar>
