@@ -1,6 +1,21 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+  html {
+    font-size: 8px; /* Base font size for extra-small screens */
+    
+    @media (min-width: 600px) {
+      font-size: 9px; /
+    }
+    
+    @media (min-width: 900px) {
+      font-size: 12px; 
+    }
+
+    
+    
+  }
+
   body {
     margin: 0;
     padding: 0;
@@ -12,5 +27,4 @@ export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
-
 `;

@@ -37,7 +37,7 @@ function getDesignTokens(mode: "light" | "dark") {
           }
         : {
             background: {
-              default: "#050c10",
+              default: "#1a1d1e",
               paper: "#081218",
             },
             text: {

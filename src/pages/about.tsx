@@ -15,7 +15,6 @@ const About: React.FC = () => {
   const skillsRef = useRef<HTMLDivElement>(null);
   const achievementsRef = useRef<HTMLDivElement>(null);
 
-  // State to track which section is active
   const [activeSection, setActiveSection] = useState("about");
 
   // Smooth scroll to a section when a sidebar link is clicked
@@ -57,7 +56,7 @@ const About: React.FC = () => {
         });
       },
       {
-        threshold: 0.25, // Section becomes active when 50% is visible
+        threshold: 0.25,
       }
     );
 
@@ -78,8 +77,10 @@ const About: React.FC = () => {
 
   return (
     <>
+      {/* Sidebar: hidden on mobile */}
       <Box
         sx={{
+          display: { xs: "none", lg: "block" },
           position: "fixed",
           top: 0,
           left: 0,
@@ -88,32 +89,33 @@ const About: React.FC = () => {
           zIndex: 3,
         }}
       >
-        <AboutSidebar
-          activeSection={activeSection}
-          onScrollTo={handleScrollTo}
-        />
+        <AboutSidebar activeSection={activeSection} onScrollTo={handleScrollTo} />
       </Box>
 
+      {/* Main Content */}
       <Box
         sx={{
           position: "relative",
           zIndex: 2,
-          maxWidth: 900,
+          width: "100%",
+          maxWidth: { xs: "95%", md: 700, xl: 900 },
           margin: "0 auto",
-          pt: 15,
-          pb: 10,
+          pt: { xs: 10, sm: 15 },
+          pb: { xs: 5, sm: 10 },
           display: "flex",
           flexDirection: "column",
-          gap: 6,
+          gap: { xs: 4, sm: 6 },
         }}
       >
+        {/* About Me Section */}
         <FadeBox
           title="01. About Me"
           sx={{
             mb: 4,
             display: "flex",
+            flexDirection: { xs: "column", md: "row" },
             justifyContent: "space-between",
-            gap: 5,
+            gap: { xs: 2, sm: 5 },
             alignItems: "center",
           }}
           ref={aboutRef}
@@ -123,6 +125,8 @@ const About: React.FC = () => {
               display: "flex",
               flexDirection: "column",
               gap: 2,
+              textAlign: "left",
+              width: { xs: "100%", md: "60%" },
             }}
           >
             <Typography variant="h3">Hi, I&apos;m Justyna! 👋</Typography>
@@ -140,7 +144,13 @@ const About: React.FC = () => {
               drawings featured on my art page.🐦
             </Typography>
           </Box>
-          <Box>
+          <Box
+            sx={{
+              width: { xs: 200, sm: "40%", xl: "30%" },
+              height: { xs: 200, sm: "30%" },
+              mt: { xs: 2, sm: 0 },
+            }}
+          >
             <Image
               src="/images/justyna.png"
               alt="About Me"
@@ -148,11 +158,15 @@ const About: React.FC = () => {
               height={300}
               style={{
                 borderRadius: "1rem",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
               }}
             />
           </Box>
         </FadeBox>
 
+        {/* Experience Section */}
         <FadeBox
           title="02. Experience"
           sx={{
@@ -165,12 +179,14 @@ const About: React.FC = () => {
           <Experience />
         </FadeBox>
 
+        {/* Education Section */}
         <FadeBox
           title="03. Education"
           sx={{
             display: "flex",
             flexDirection: "column",
             gap: 2,
+            textAlign: "left",
           }}
           ref={educationRef}
         >
@@ -199,17 +215,30 @@ const About: React.FC = () => {
           </Typography>
         </FadeBox>
 
+        {/* Skills Section */}
         <FadeBox
           title="04. Skills"
-          sx={{ display: "flex", flexDirection: "column", gap: 4 }}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 4,
+            textAlign: "left",
+          }}
           ref={skillsRef}
         >
           <Skills />
         </FadeBox>
 
+        {/* Achievements Section */}
         <FadeBox
           title="0.5 Achievements"
-          sx={{ display: "flex", flexDirection: "column", gap: 2, my: 4 }}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+            my: { xs: 3, sm: 4 },
+            textAlign: "left",
+          }}
           ref={achievementsRef}
         >
           <Typography variant="h3">Achievements</Typography>
