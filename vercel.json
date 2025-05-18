@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/show-bird/:path*",
+        "destination": "https://show-bird-p1kyyvf1l-justyna-przys-projects.vercel.app/:path*"
+      }
+    ]
+  }
+  
